@@ -1,5 +1,79 @@
 {% extends "base.html" %}
 
+
+
+{% block title %}
+Chicken diary
+{% endblock %}
+
+{% block lead %}
+나는 어떤치킨을 먹고, 좋아하는가?<br>
+내가 먹은 치킨들을 한눈에 보자!
+{% endblock %}
+
+{% block main_body %}
+<form method="POST" action="/api/user">
+<input>
+
+    <select class="form-select-lg mb-3" aria-label="Default select example">
+    <option selected>치킨 브랜드를 참고하세요.</option>
+    
+    <option value=1> BBQ치킨 </option>
+    <option value=2> BHC </option>
+    <option value=3> 페리카나 </option>
+    <option value=4> 네네치킨 </option>
+    <option value=5> 맘스터치 </option>
+    <option value=6> 교촌치킨 </option>
+    <option value=7> 굽네치킨 </option>
+    <option value=8> 처갓집 양념치킨 </option>
+    <option value=9> 호식이 두마리치킨 </option>
+    <option value=10> 멕시카나 </option>
+    <option value=11> 또래오래 </option>
+    <option value=12> 또봉이통닭 </option>
+    <option value=13> 지코바치킨 </option>
+    <option value=14>  </option>
+    
+    </select>
+
+    <select class="form-select-lg mb-3" aria-label="Default select example">
+    <option selected>치킨 종류를 참고하세요.</option>
+
+    <option value=1> 후라이드 </option>
+    <option value=2> 간장 </option>
+    <option value=3> 양념 </option>
+    <option value=4> 순살 후라이드 </option>
+    <option value=5> 순살 간장 </option>
+    <option value=6> 순살 양념 </option>
+    <option value=7> 위봉 </option>
+    <option value=8> 반반 (후라이드 + 간장) </option>
+    <option value=9> 반반 (후라이드 + 양념) </option>
+    <option value=10> 반반 (후라이드 + 후라이드) </option>
+    <option value=11> 반반 (간장 + 간장) </option>
+    <option value=12> 반반 (간장 + 양념) </option>
+    <option value=13> 반반 (양념 + 양념) </option>
+    <option value=14>  </option>
+
+    </select>
+
+    <ul class="list-group">
+    {% for i in b_list %}
+        <li class="list-group-item"> {{i}} </li>
+    {% endfor %}
+    </ul> 
+
+    <ul>
+    {%for i in b_list%}
+    <li> {{i}} </li>
+    {%endfor%}
+    </ul>
+
+
+</form>
+{% endblock %}
+
+
+
+
 {% block content %}
 
 <div class="container">
@@ -41,10 +115,7 @@
                     <td><strong>{{ entry.title }}</strong></td>
                     <td>{{ entry.description }}</td>
                     <td>
-                        <a class="{{ 'btn btn-success' if entry.status else 'btn btn-dark'}}"
-                           href="/turn/{{ entry.id }}">
-                            Turn Status
-                        </a>
+
                         <a class="btn btn-danger"
                            href="/delete/{{ entry.id }}">
                             Delete

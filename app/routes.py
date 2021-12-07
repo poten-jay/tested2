@@ -4,7 +4,7 @@ from app.models import Entry
 
 jedi = "of the jedi"
 
-@app.route('/')
+@app.route('/aa')
 @app.route('/index')
 def index():
     # entries = [
@@ -34,31 +34,49 @@ def add():
             entry = Entry(title = title, description = description)
             db.session.add(entry)
             db.session.commit()
-            return redirect('/')
+            return redirect('/aa')
 
     return "of the jedi"
+
+
+
 
 @app.route('/update/<int:id>')
 def updateRoute(id):
+    entry = Entry.query.get(id)
     if not id or id != 0:
-        entry = Entry.query.get(id)
-        if entry:
-            return render_template('update.html', entry=entry)
-
+        return render_template('update.html', entry=entry)
+    else:
+        db.session.delete(entry)
+        db.session.commit()
+        return redirect('/aa')
     return "of the jedi"
-
-@app.route('/update', methods=['POST'])
-def update():
-    if not id or id != 0:
-        entry = Entry.query.get(id)
-        if entry:
-            db.session.delete(entry)
-            db.session.commit()
-        return redirect('/')
-
-    return "of the jedi"
+        
 
 
+############################################################
+
+# @app.route('/update/<int:id>')
+# def updateRoute(id):
+#     if not id or id != 0:
+#         entry = Entry.query.get(id)
+#         if entry:
+#             return render_template('update.html', entry=entry)
+
+#     # return "of the jedi"
+
+# @app.route('/update', methods=['GET', 'POST'])
+# def update():
+#     if not id or id != 0:
+#         entry = Entry.query.get(id)
+#         if entry:
+#             db.session.delete(entry)
+#             db.session.commit()
+#             return redirect('/aa')
+
+#     return "of the jedi"
+
+############################################################
 
 @app.route('/delete/<int:id>')
 def delete(id):
@@ -67,7 +85,7 @@ def delete(id):
         if entry:
             db.session.delete(entry)
             db.session.commit()
-        return redirect('/')
+        return redirect('/aa')
 
     return "of the jedi"
 
@@ -78,9 +96,27 @@ def turn(id):
         if entry:
             entry.status = not entry.status
             db.session.commit()
-        return redirect('/')
+        return redirect('/aa')
 
     return "of the jedi"
+
+@app.route('/')                          # app 을 bp로 바꿔줌
+def index1():
+    return render_template('index c.html')
+
+@app.route('/user/')                    # main_route로 옮겨 줌
+def create1():
+    # User.query
+    return render_template('user.html')
+
+@app.route('/compare')
+def update1():
+    return render_template('compare_user.html')
+
+@app.route('/content')
+def update12():
+    return render_template('content.html')
+
 
 # @app.errorhandler(Exception)
 # def error_page(e):

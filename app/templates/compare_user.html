@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+세상에! 치킨이 너무나 많다!
+{% endblock  %}
+
+{% block lead  %}
+오늘은 뭘 먹어볼까?
+{% endblock  %}
+
+{% block main_body  %}
+
+<html>
+<head>
+<title>www.webmadang.net</title>
+<script language="javascript">
+<!--
+function getSelectValue(frm)
+{
+ frm.textValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].text;
+ frm.optionValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].value;
+}
+//-->
+</script>
+</head>
+<body>
+<form name="form">
+<select name="selectBox" onChange="getSelectValue(this.form);">
+ <option value="https://www.bbq.co.kr/main.asp">BBQ치킨</option>
+ <option value="https://www.bhc.co.kr/">BHC</option>
+ <option value="https://pelicana.co.kr/main.html">페리카나</option>
+ <option value="https://nenechicken.com/17_new/index.asp">네네치킨 </option>
+ <option value="https://momstouch.co.kr/">맘스터치 </option>
+ <option value="http://www.kyochon.com/main/">교촌치킨 </option>
+ <option value="https://www.goobne.co.kr/#0">굽네치킨 </option>
+ <option value="http://www.cheogajip.co.kr/">처갓집 양념통닭 </option>
+ <option value="http://www.9922.co.kr/">호식이 두마리치킨 </option>
+ <option value="https://www.mexicana.co.kr/main/">멕시카나 </option>
+ <option value="https://www.toreore.com/">또래오래 </option>
+ <option value="http://ttobongee.com/">또봉이통닭 </option>
+ <option value="http://www.gcova.co.kr/">지코바치킨 </option>
+ 
+</select><br><br>
+치킨 브랜드: <input type="text" name="textValue">&nbsp;&nbsp;홈페이지: <input type="text" name="optionValue">
+</form>
+</body>
+</html>
+
+
+
+{% if prediction %}
+<p>Person likely to say '{{prediction.compare_text}}' is '{{prediction.result}}'</p>
+{% endif %}
+
+<br>
+<br>
+<br>
+<img src="https://mblogthumb-phinf.pstatic.net/20150922_53/uhyeon1214_1442891288637zCen7_PNG/%C4%A1%C5%B2.png?type=w2"
+alt="반반" width="1000" height="672" align="center" border="0">
+
+
+{% endblock  %}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block alert %}
+{% if alert_msg %}
+<div class="alert alert-{{ alert_msg.type }}" role="alert">
+  {{ alert_msg.msg }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block title %}
+Chicken diary
+{% endblock %}
+
+{% block lead %}
+나는 어떤치킨을 먹고, 좋아하는가?<br>
+내가 먹은 치킨들을 한눈에 보자!
+{% endblock %}
+
+{% block main_body %}
+<form method="POST" action="/select">
+  <input>
+  
+    <select class="form-select-lg mb-3" aria-label="Default select example">
+      <option selected>치킨 브랜드를 선택하세요.</option>
+      
+      <option value=1> BBQ치킨 </option>
+      <option value=2> BHC </option>
+      <option value=3> 페리카나 </option>
+      <option value=4> 네네치킨 </option>
+      <option value=5> 맘스터치 </option>
+      <option value=6> 교촌치킨 </option>
+      <option value=7> 굽네치킨 </option>
+      <option value=8> 처갓집 양념치킨 </option>
+      <option value=9> 호식이 두마리치킨 </option>
+      <option value=10> 멕시카나 </option>
+      <option value=11> 또래오래 </option>
+      <option value=12> 또봉이통닭 </option>
+      <option value=13> 지코바치킨 </option>
+      <option value=14>  </option>
+      
+    </select>
+
+    <select class="form-select-lg mb-3" aria-label="Default select example">
+      <option selected>치킨 종류를 선택하세요.</option>
+
+      <option value=1> 후라이드 </option>
+      <option value=2> 간장 </option>
+      <option value=3> 양념 </option>
+      <option value=4> 순살 후라이드 </option>
+      <option value=5> 순살 간장 </option>
+      <option value=6> 순살 양념 </option>
+      <option value=7> 윙봉 </option>
+      <option value=8> 반반 (후라이드 + 간장) </option>
+      <option value=9> 반반 (후라이드 + 양념) </option>
+      <option value=10> 반반 (후라이드 + 후라이드) </option>
+      <option value=11> 반반 (간장 + 간장) </option>
+      <option value=12> 반반 (간장 + 양념) </option>
+      <option value=13> 반반 (양념 + 양념) </option>
+      <option value=14>  </option>
+
+
+    </select>
+
+    <ul class="list-group">
+      {% for i in b_list %}
+        <li class="list-group-item"> {{i}} </li>
+      {% endfor %}
+    </ul> 
+
+    <ul>
+      {%for i in b_list%}
+      <li> {{i}} </li>
+      {%endfor%}
+    </ul>
+
+
+
+
+  <input type="submit" class="btn btn-primary" value="Add" />
+
+</form>
+
+<table>
+  <tr>
+    <th> brand </th>
+    <th> chicken </th?
+  </tr>
+
+  {% for i in b_list %}
+
+  <tr>
+    <td> {{i.id}} </td>
+    <td> {{i.brand}} </td>
+  <tr>
+  {% endfor %}
+</table>
+
+<img src="https://mblogthumb-phinf.pstatic.net/20150922_53/uhyeon1214_1442891288637zCen7_PNG/%C4%A1%C5%B2.png?type=w2"
+alt="반반" width="1000" height="672" align="center" border="0">
+
+
+{% if user_list %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in user_list %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.full_name }}</td>
+      <td>{{ user.username }}</td>
+      <td>
+        <a class="btn btn-secondary", href='/api/user/{{ user.id }}'>
+          Delete
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}
