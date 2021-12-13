@@ -1,5 +1,7 @@
 # Example Python Flask Crud
 
+ 구 치킨 + CRUD
+
  Simple example python flask crud app for sqlite.
  
 ## Screenshots
@@ -7,7 +9,16 @@
 
 ![image](screenshots.png)  
  
- 
+---
+
+추가
+
+업데이트 구성 문제 발견
+
+마지막 페이지 - 홈페이지 주소 바로 연결 버튼 추가 (미구현)
+
+---
+
 ### Installing (for linux)
 
 open the terminal and follow the white rabbit.
@@ -18,7 +29,7 @@ git clone https://github.com/gurkanakdeniz/example-flask-crud.git
 ```
 ```
 cd example-flask-crud/
-```
+``` 
 ```
 python3 -m venv venv
 ```
