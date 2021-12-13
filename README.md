@@ -17,6 +17,8 @@
 
 마지막 페이지 - 홈페이지 주소 바로 연결 버튼 추가 (미구현)
 
+폴더 구성 : d/coding/tested4/example-flask-crud
+
 ---
 
 ### Installing (for linux)
